@@ -2353,7 +2353,7 @@ SELECT * FROM exclusions_extras_dim;
 
 
 ### Final Schema
-![modeled_erd.png](attachment:modeled_erd.png)
+![modeled_erd.png](./modeled_erd.png)
 
 ## PART III: Reporting
 
