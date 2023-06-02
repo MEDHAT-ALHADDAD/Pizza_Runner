@@ -136,7 +136,7 @@ engine = create_engine(conn_text)
 CREATE SCHEMA IF NOT EXISTS pizza_runner;
 SET search_path = pizza_runner;
 
-DROP TABLE IF EXISTS runners;
+DROP TABLE IF EXISTS runners CASCADE;
 CREATE TABLE runners (
   "runner_id" INTEGER,
   "registration_date" DATE
@@ -150,7 +150,7 @@ VALUES
   (4, '2021-01-15');
 
 
-DROP TABLE IF EXISTS customer_orders;
+DROP TABLE IF EXISTS customer_orders CASCADE;
 CREATE TABLE customer_orders (
   "order_id" INTEGER,
   "customer_id" INTEGER,
@@ -179,7 +179,7 @@ VALUES
   ('10', '104', '1', '2, 6', '1, 4', '2020-01-11 18:34:49');
 
 
-DROP TABLE IF EXISTS runner_orders;
+DROP TABLE IF EXISTS runner_orders CASCADE;
 CREATE TABLE runner_orders (
   "order_id" INTEGER,
   "runner_id" INTEGER,
@@ -204,7 +204,7 @@ VALUES
   ('10', '1', '2020-01-11 18:50:20', '10km', '10minutes', 'null');
 
 
-DROP TABLE IF EXISTS pizza_names;
+DROP TABLE IF EXISTS pizza_names CASCADE;
 CREATE TABLE pizza_names (
   "pizza_id" INTEGER,
   "pizza_name" TEXT
@@ -350,7 +350,7 @@ ORDER BY table_name, ordinal_position;
 ```
 
      * postgresql://medhat:***@localhost/medhat
-    46 rows affected.
+    140 rows affected.
 
 
 
@@ -440,6 +440,234 @@ ORDER BY table_name, ordinal_position;
         </tr>
         <tr>
             <td>1</td>
+            <td>date_dim</td>
+            <td>date</td>
+            <td>timestamp without time zone</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>exclusions_extras_dim</td>
+            <td>exc_ext_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>exclusions_extras_dim</td>
+            <td>concat_exclusions</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>exclusions_extras_dim</td>
+            <td>concat_extras</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>exclusions_extras_dim</td>
+            <td>exclusions_or_extras</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>order_id</td>
+            <td>numeric</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>pizza_id</td>
+            <td>numeric</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>bacon</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>bbq_sauce</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>beef</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>cheese</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>chicken</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>mushrooms</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>onions</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>pepperoni</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>peppers</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>salami</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>tomatoes</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>tomato_sauce</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>concat_toppings</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>execlusions_inclusions_dim</td>
+            <td>exclusions_or_extras</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>init_exclusions_extras_dim</td>
+            <td>exc_ext_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>init_exclusions_extras_dim</td>
+            <td>concat_exclusions</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>init_exclusions_extras_dim</td>
+            <td>concat_extras</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>init_exclusions_extras_dim</td>
+            <td>exclusions_or_extras</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>init_order_fact</td>
+            <td>order_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>init_order_fact</td>
+            <td>customer_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>init_order_fact</td>
+            <td>pizza_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>init_order_fact</td>
+            <td>runner_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>init_order_fact</td>
+            <td>exc_ext_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>init_order_fact</td>
+            <td>order_date</td>
+            <td>timestamp without time zone</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>init_order_fact</td>
+            <td>pickup_time</td>
+            <td>timestamp without time zone</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>init_order_fact</td>
+            <td>duration</td>
+            <td>interval</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>init_order_fact</td>
+            <td>expected_arrival</td>
+            <td>timestamp without time zone</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>init_order_fact</td>
+            <td>distance</td>
+            <td>numeric</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>init_order_fact</td>
+            <td>exclusions</td>
+            <td>character varying</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>init_order_fact</td>
+            <td>extras</td>
+            <td>character varying</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>init_order_fact</td>
+            <td>cancellation</td>
+            <td>character varying</td>
+        </tr>
+        <tr>
+            <td>1</td>
             <td>order_fact</td>
             <td>order_id</td>
             <td>integer</td>
@@ -465,50 +693,200 @@ ORDER BY table_name, ordinal_position;
         <tr>
             <td>5</td>
             <td>order_fact</td>
-            <td>order_date</td>
-            <td>timestamp without time zone</td>
+            <td>exc_ext_id</td>
+            <td>integer</td>
         </tr>
         <tr>
             <td>6</td>
             <td>order_fact</td>
-            <td>pickup_time</td>
+            <td>order_date</td>
             <td>timestamp without time zone</td>
         </tr>
         <tr>
             <td>7</td>
             <td>order_fact</td>
+            <td>pickup_time</td>
+            <td>timestamp without time zone</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>order_fact</td>
             <td>duration</td>
             <td>interval</td>
         </tr>
         <tr>
-            <td>8</td>
+            <td>9</td>
             <td>order_fact</td>
             <td>expected_arrival</td>
             <td>timestamp without time zone</td>
         </tr>
         <tr>
-            <td>9</td>
+            <td>10</td>
             <td>order_fact</td>
             <td>distance</td>
             <td>numeric</td>
         </tr>
         <tr>
-            <td>10</td>
+            <td>11</td>
             <td>order_fact</td>
             <td>exclusions</td>
             <td>character varying</td>
         </tr>
         <tr>
-            <td>11</td>
+            <td>12</td>
             <td>order_fact</td>
             <td>extras</td>
             <td>character varying</td>
         </tr>
         <tr>
-            <td>12</td>
+            <td>13</td>
             <td>order_fact</td>
             <td>cancellation</td>
             <td>character varying</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>order_fact</td>
+            <td>rating</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>order_preparing_time</td>
+            <td>order_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>order_preparing_time</td>
+            <td>pizza_numbers</td>
+            <td>bigint</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>order_preparing_time</td>
+            <td>preparing_time</td>
+            <td>interval</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>orders_speed</td>
+            <td>order_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>orders_speed</td>
+            <td>runner_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>orders_speed</td>
+            <td>distance</td>
+            <td>numeric</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>orders_speed</td>
+            <td>duration</td>
+            <td>interval</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>orders_speed</td>
+            <td>speed (km per min)</td>
+            <td>numeric</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>pizza_dim</td>
+            <td>pizza_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>pizza_dim</td>
+            <td>pizza_name</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>pizza_dim</td>
+            <td>bacon</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>pizza_dim</td>
+            <td>bbq_sauce</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>pizza_dim</td>
+            <td>beef</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>pizza_dim</td>
+            <td>cheese</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>pizza_dim</td>
+            <td>chicken</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>pizza_dim</td>
+            <td>mushrooms</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>pizza_dim</td>
+            <td>onions</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>pizza_dim</td>
+            <td>pepperoni</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>pizza_dim</td>
+            <td>peppers</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>pizza_dim</td>
+            <td>salami</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>pizza_dim</td>
+            <td>tomatoes</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>pizza_dim</td>
+            <td>tomato_sauce</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>pizza_dim</td>
+            <td>concat_toppings</td>
+            <td>text</td>
         </tr>
         <tr>
             <td>1</td>
@@ -641,6 +1019,192 @@ ORDER BY table_name, ordinal_position;
             <td>runners_clean</td>
             <td>registration_date</td>
             <td>date</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>test_al</td>
+            <td>pizza_id</td>
+            <td>integer</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>test_al</td>
+            <td>pizza_name</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>test_al</td>
+            <td>bacon</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>test_al</td>
+            <td>bbq_sauce</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>test_al</td>
+            <td>beef</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>test_al</td>
+            <td>cheese</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>test_al</td>
+            <td>chicken</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>test_al</td>
+            <td>mushrooms</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>test_al</td>
+            <td>onions</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>test_al</td>
+            <td>pepperoni</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>test_al</td>
+            <td>peppers</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>test_al</td>
+            <td>salami</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>test_al</td>
+            <td>tomatoes</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>test_al</td>
+            <td>tomato_sauce</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>test_al</td>
+            <td>concat_toppings</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>order_id</td>
+            <td>numeric</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>pizza_id</td>
+            <td>numeric</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>bacon</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>bbq_sauce</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>beef</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>cheese</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>chicken</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>mushrooms</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>onions</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>pepperoni</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>peppers</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>salami</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>tomatoes</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>tomato_sauce</td>
+            <td>boolean</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>concat_toppings</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>updated_exclusions_extras_dim</td>
+            <td>exclusions_or_extras</td>
+            <td>text</td>
         </tr>
     </tbody>
 </table>
@@ -1113,7 +1677,7 @@ To simplify Queries, let's merge customer and runner orders in one order_fact ta
 %%sql
 
 -- CREATE order_fact
-DROP TABLE IF EXISTS order_fact;
+DROP TABLE IF EXISTS order_fact CASCADE;
 
 CREATE TABLE IF NOT EXISTS order_fact AS
     SELECT
@@ -1121,6 +1685,8 @@ CREATE TABLE IF NOT EXISTS order_fact AS
         customer_id,
         pizza_id,
         runner_id,
+        CASE WHEN exclusions IS NOT NULL OR extras IS NOT NULL
+            THEN floor(random() * 1000000 + 1)::int END AS exc_ext_id,
         order_time AS order_date,
         pickup_time,
         duration,
@@ -1155,6 +1721,7 @@ LIMIT 3;
             <th>customer_id</th>
             <th>pizza_id</th>
             <th>runner_id</th>
+            <th>exc_ext_id</th>
             <th>order_date</th>
             <th>pickup_time</th>
             <th>duration</th>
@@ -1171,6 +1738,7 @@ LIMIT 3;
             <td>101</td>
             <td>1</td>
             <td>1</td>
+            <td>None</td>
             <td>2020-01-01 18:05:02</td>
             <td>2020-01-01 18:15:34</td>
             <td>0:32:00</td>
@@ -1185,6 +1753,7 @@ LIMIT 3;
             <td>101</td>
             <td>1</td>
             <td>1</td>
+            <td>None</td>
             <td>2020-01-01 19:00:52</td>
             <td>2020-01-01 19:10:54</td>
             <td>0:27:00</td>
@@ -1199,6 +1768,7 @@ LIMIT 3;
             <td>102</td>
             <td>1</td>
             <td>1</td>
+            <td>None</td>
             <td>2020-01-02 23:51:23</td>
             <td>2020-01-03 00:12:37</td>
             <td>0:20:00</td>
@@ -1583,55 +2153,42 @@ SELECT * FROM pizza_dim;
 
 ```sql
 %%sql
-DROP TABLE IF EXISTS exclusions_extras_dim;
+DROP TABLE IF EXISTS init_exclusions_extras_dim CASCADE;
 
-CREATE TABLE IF NOT EXISTS exclusions_extras_dim (
-    order_id NUMERIC,
-    pizza_id NUMERIC,
-    bacon BOOL,
-    bbq_sauce BOOL,
-    beef BOOL,
-    cheese BOOL,
-    chicken BOOL,
-    mushrooms BOOL,
-    onions BOOL,
-    pepperoni BOOL,
-    peppers BOOL,
-    salami BOOL,
-    tomatoes BOOL,
-    tomato_sauce BOOL,
-    concat_toppings TEXT,
+CREATE TABLE IF NOT EXISTS init_exclusions_extras_dim (
+    exc_ext_id INT,
+    concat_exclusions TEXT,
+    concat_extras TEXT,
     exclusions_or_extras TEXT
 );
 
-INSERT INTO exclusions_extras_dim 
-    (order_id, pizza_id, concat_toppings, exclusions_or_extras)
-SELECT DISTINCT
-    order_id,
-    pizza_id,
-    exclusions AS concat_toppings,
-    'exclusions' AS exclusions_or_extras
+INSERT INTO init_exclusions_extras_dim 
+    (exc_ext_id, concat_exclusions, concat_extras, exclusions_or_extras)
+SELECT
+    exc_ext_id,
+    exclusions AS concat_exclusions,
+    extras AS concat_extras,
+    CASE 
+        WHEN exclusions IS NOT NULL AND extras IS NOT NULL 
+            THEN 'both'
+        WHEN exclusions IS NOT NULL
+            THEN 'exclusions'
+        WHEN extras IS NOT NULL
+            THEN 'extras'
+        ELSE NULL END AS exclusions_or_extras       
 FROM order_fact
-WHERE exclusions IS NOT NULL
-UNION
-SELECT DISTINCT
-    order_id,
-    pizza_id,
-    extras AS concat_toppings,
-    'extras' AS exclusions_or_extras
-FROM order_fact
-WHERE extras IS NOT NULL
+WHERE exclusions IS NOT NULL OR extras IS NOT NULL
 ORDER BY 1, 2;
 
 
-SELECT * FROM exclusions_extras_dim;
+SELECT * FROM init_exclusions_extras_dim;
 ```
 
      * postgresql://medhat:***@localhost/medhat
     Done.
     Done.
-    8 rows affected.
-    8 rows affected.
+    7 rows affected.
+    7 rows affected.
 
 
 
@@ -1640,168 +2197,54 @@ SELECT * FROM exclusions_extras_dim;
 <table>
     <thead>
         <tr>
-            <th>order_id</th>
-            <th>pizza_id</th>
-            <th>bacon</th>
-            <th>bbq_sauce</th>
-            <th>beef</th>
-            <th>cheese</th>
-            <th>chicken</th>
-            <th>mushrooms</th>
-            <th>onions</th>
-            <th>pepperoni</th>
-            <th>peppers</th>
-            <th>salami</th>
-            <th>tomatoes</th>
-            <th>tomato_sauce</th>
-            <th>concat_toppings</th>
+            <th>exc_ext_id</th>
+            <th>concat_exclusions</th>
+            <th>concat_extras</th>
             <th>exclusions_or_extras</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>4</td>
-            <td>1</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>4</td>
-            <td>exclusions</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>2</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>4</td>
-            <td>exclusions</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>1</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
+            <td>87242</td>
             <td>None</td>
             <td>1</td>
             <td>extras</td>
         </tr>
         <tr>
-            <td>7</td>
-            <td>2</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>1</td>
-            <td>extras</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>1</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>1, 5</td>
-            <td>extras</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>1</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
+            <td>433564</td>
             <td>4</td>
+            <td>None</td>
             <td>exclusions</td>
         </tr>
         <tr>
-            <td>10</td>
-            <td>1</td>
+            <td>588917</td>
+            <td>4</td>
             <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
+            <td>exclusions</td>
+        </tr>
+        <tr>
+            <td>638446</td>
             <td>2, 6</td>
-            <td>exclusions</td>
+            <td>1, 4</td>
+            <td>both</td>
         </tr>
         <tr>
-            <td>10</td>
+            <td>678602</td>
+            <td>None</td>
             <td>1</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>None</td>
-            <td>1, 4</td>
             <td>extras</td>
+        </tr>
+        <tr>
+            <td>720427</td>
+            <td>4</td>
+            <td>1, 5</td>
+            <td>both</td>
+        </tr>
+        <tr>
+            <td>967343</td>
+            <td>4</td>
+            <td>None</td>
+            <td>exclusions</td>
         </tr>
     </tbody>
 </table>
@@ -1809,9 +2252,108 @@ SELECT * FROM exclusions_extras_dim;
 
 
 
-```python
+```sql
+%%sql
 
+DROP TABLE IF EXISTS exclusions_extras_dim CASCADE;
+CREATE TABLE IF NOT EXISTS exclusions_extras_dim AS (
+    SELECT
+        exc_ext_id,
+        (
+            SELECT LOWER(REPLACE(STRING_AGG(topping_name, ','), ' ', '_'))
+            FROM (
+                SELECT DISTINCT unnest(string_to_array(concat_exclusions, ', '))::integer AS topping_id
+                FROM init_exclusions_extras_dim
+                WHERE exc_ext_id = e.exc_ext_id
+            ) AS subquery
+            JOIN pizza_toppings
+            ON subquery.topping_id = pizza_toppings.topping_id
+        ) AS concat_exclusions,
+        (
+            SELECT LOWER(REPLACE(STRING_AGG(topping_name, ','), ' ', '_'))
+            FROM (
+                SELECT DISTINCT unnest(string_to_array(concat_extras, ', '))::integer AS topping_id
+                FROM init_exclusions_extras_dim
+                WHERE exc_ext_id = e.exc_ext_id
+            ) AS subquery
+            JOIN pizza_toppings
+            ON subquery.topping_id = pizza_toppings.topping_id
+        ) AS concat_extras,
+        exclusions_or_extras
+    FROM init_exclusions_extras_dim AS e
+);
+
+SELECT * FROM exclusions_extras_dim;
 ```
+
+     * postgresql://medhat:***@localhost/medhat
+    Done.
+    7 rows affected.
+    7 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>exc_ext_id</th>
+            <th>concat_exclusions</th>
+            <th>concat_extras</th>
+            <th>exclusions_or_extras</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>87242</td>
+            <td>None</td>
+            <td>bacon</td>
+            <td>extras</td>
+        </tr>
+        <tr>
+            <td>433564</td>
+            <td>cheese</td>
+            <td>None</td>
+            <td>exclusions</td>
+        </tr>
+        <tr>
+            <td>588917</td>
+            <td>cheese</td>
+            <td>None</td>
+            <td>exclusions</td>
+        </tr>
+        <tr>
+            <td>638446</td>
+            <td>bbq_sauce,mushrooms</td>
+            <td>bacon,cheese</td>
+            <td>both</td>
+        </tr>
+        <tr>
+            <td>678602</td>
+            <td>None</td>
+            <td>bacon</td>
+            <td>extras</td>
+        </tr>
+        <tr>
+            <td>720427</td>
+            <td>cheese</td>
+            <td>bacon,chicken</td>
+            <td>both</td>
+        </tr>
+        <tr>
+            <td>967343</td>
+            <td>cheese</td>
+            <td>None</td>
+            <td>exclusions</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+### Final Schema
+![modeled_erd.png](attachment:modeled_erd.png)
 
 ## PART III: Reporting
 
@@ -2037,7 +2579,7 @@ ORDER BY 1;
 ```sql
 %%sql
 
-SELECT order_id, count(pizza_id) AS max_pizzas_delivered
+SELECT order_id, count(*) AS max_pizzas_delivered
 FROM order_fact
 GROUP BY 1
 ORDER BY 2 DESC
@@ -2075,15 +2617,14 @@ LIMIT 1;
 %%sql
 
 SELECT 
-    customer_id,
-    SUM(CASE WHEN exclusions IS NOT NULL OR extras IS NOT NULL
-        THEN 1 ELSE 0 END) AS change_requested,
-    SUM(CASE WHEN exclusions IS NULL AND extras IS NULL
-        THEN 1 ELSE 0 END) AS no_change_requested
-FROM order_fact
+    customer_id, 
+    SUM(CASE WHEN exc_ext_id IS NOT NULL THEN 1 ELSE 0 END) AS changed_order,
+    SUM(CASE WHEN exc_ext_id IS NULL THEN 1 ELSE 0 END) AS non_changed_order
+FROM order_fact as o
+LEFT JOIN exclusions_extras_dim as e
+USING(exc_ext_id)
 WHERE cancellation IS NULL
-GROUP BY 1
-ORDER BY 1;
+GROUP BY 1;
 ```
 
      * postgresql://medhat:***@localhost/medhat
@@ -2097,8 +2638,8 @@ ORDER BY 1;
     <thead>
         <tr>
             <th>customer_id</th>
-            <th>change_requested</th>
-            <th>no_change_requested</th>
+            <th>changed_order</th>
+            <th>non_changed_order</th>
         </tr>
     </thead>
     <tbody>
@@ -2138,12 +2679,9 @@ ORDER BY 1;
 ```sql
 %%sql
 
-SELECT 
-    SUM(CASE WHEN exclusions IS NOT NULL AND extras IS NOT NULL
-        THEN 1 ELSE 0 END) AS special_pizzas
+SELECT COUNT(DISTINCT exc_ext_id)
 FROM order_fact
-WHERE cancellation IS NULL
-ORDER BY 1;
+WHERE MOD(exc_ext_id::int, 10) = 0  AND cancellation IS NOT NULL
 ```
 
      * postgresql://medhat:***@localhost/medhat
@@ -2156,12 +2694,12 @@ ORDER BY 1;
 <table>
     <thead>
         <tr>
-            <th>special_pizzas</th>
+            <th>count</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
+            <td>0</td>
         </tr>
     </tbody>
 </table>
@@ -2491,13 +3029,13 @@ ORDER BY 1;
 WITH avg_prep_time AS (
     SELECT 
         pizza_numbers,
-        round(avg(EXTRACT( EPOCH FROM preparing_time) / 60), 2) AS avg_prep_time
+        avg(EXTRACT( EPOCH FROM preparing_time) / 60) AS avg_prep_time
     FROM order_preparing_time
     GROUP BY 1
     ORDER BY 1
 )
 
-SELECT corr(pizza_numbers, avg_prep_time)
+SELECT ROUND((corr(pizza_numbers, avg_prep_time) * 100)::NUMERIC, 2) AS corr_percent
 FROM avg_prep_time;
 ```
 
@@ -2511,12 +3049,12 @@ FROM avg_prep_time;
 <table>
     <thead>
         <tr>
-            <th>corr</th>
+            <th>corr_percent</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>0.986417838191981</td>
+            <td>98.64</td>
         </tr>
     </tbody>
 </table>
@@ -2535,6 +3073,7 @@ SELECT customer_id, ROUND(avg(distance), 2) AS avg_distance
 FROM (
     SELECT DISTINCT order_id, customer_id, distance
     FROM order_fact
+    
 ) AS uniq_orders
 GROUP BY 1
 ORDER BY 1;
@@ -2633,7 +3172,7 @@ CREATE OR REPLACE VIEW orders_speed AS (
         duration,
         round(
             distance / (EXTRACT(EPOCH FROM duration) / 60)
-        , 2) AS "speed (km per min)"
+            , 2) AS "speed (km per min)"
     FROM order_fact
 );
 
@@ -2742,7 +3281,8 @@ ORDER BY 1;
 
 SELECT runner_id, round(avg("speed (km per min)"), 2)
 FROM orders_speed
-GROUP BY 1
+GROUP BY 
+1
 ORDER BY 2 DESC;
 ```
 
@@ -2857,48 +3397,195 @@ ORDER BY 1;
 ```sql
 %%sql
 
-SELECT 
-    topping_id,
-    topping_name
-FROM pizza_toppings
-WHERE topping_id IN (
-    SELECT toppings
-    FROM pizza_recipes
-    WHERE pizza_id=1
-)
+SELECT
+    pizza_name,
+    INITCAP(REPLACE(REPLACE(concat_toppings, '_', ' '), ',', ', '))
+        AS toppings
+FROM pizza_dim;
 ```
 
      * postgresql://medhat:***@localhost/medhat
-    (psycopg2.errors.UndefinedFunction) operator does not exist: integer = text
-    LINE 5: WHERE topping_id IN (
-                             ^
-    HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
-    
-    [SQL: SELECT 
-        topping_id,
-        topping_name
-    FROM pizza_toppings
-    WHERE topping_id IN (
-        SELECT toppings
-        FROM pizza_recipes
-        WHERE pizza_id=1
-    )]
-    (Background on this error at: https://sqlalche.me/e/14/f405)
+    2 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>pizza_name</th>
+            <th>toppings</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Meatlovers</td>
+            <td>Bacon, Bbq Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami</td>
+        </tr>
+        <tr>
+            <td>Vegetarian</td>
+            <td>Cheese, Mushrooms, Onions, Peppers, Tomatoes, Tomato Sauce</td>
+        </tr>
+    </tbody>
+</table>
+
 
 
 #### ii) What was the most commonly added extra?
 
 
-```python
+```sql
 %%sql
+SELECT * FROM exclusions_extras_dim
 ```
+
+     * postgresql://medhat:***@localhost/medhat
+    7 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>exc_ext_id</th>
+            <th>concat_exclusions</th>
+            <th>concat_extras</th>
+            <th>exclusions_or_extras</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>87242</td>
+            <td>None</td>
+            <td>bacon</td>
+            <td>extras</td>
+        </tr>
+        <tr>
+            <td>433564</td>
+            <td>cheese</td>
+            <td>None</td>
+            <td>exclusions</td>
+        </tr>
+        <tr>
+            <td>588917</td>
+            <td>cheese</td>
+            <td>None</td>
+            <td>exclusions</td>
+        </tr>
+        <tr>
+            <td>638446</td>
+            <td>bbq_sauce,mushrooms</td>
+            <td>bacon,cheese</td>
+            <td>both</td>
+        </tr>
+        <tr>
+            <td>678602</td>
+            <td>None</td>
+            <td>bacon</td>
+            <td>extras</td>
+        </tr>
+        <tr>
+            <td>720427</td>
+            <td>cheese</td>
+            <td>bacon,chicken</td>
+            <td>both</td>
+        </tr>
+        <tr>
+            <td>967343</td>
+            <td>cheese</td>
+            <td>None</td>
+            <td>exclusions</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+```sql
+%%sql
+
+SELECT extras, count(*)
+FROM (
+    SELECT
+        UNNEST(REGEXP_MATCHES(concat_extras, '[a-z]{1,50}','g')) AS extras
+    FROM exclusions_extras_dim
+) subquery
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 1;
+```
+
+     * postgresql://medhat:***@localhost/medhat
+    1 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>extras</th>
+            <th>count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>bacon</td>
+            <td>4</td>
+        </tr>
+    </tbody>
+</table>
+
+
 
 #### iii) What was the most common exclusion?
 
 
-```python
+```sql
 %%sql
+
+SELECT extras, count(*)
+FROM (
+    SELECT
+        UNNEST(REGEXP_MATCHES(concat_exclusions, '[a-z]{1,50}','g')) AS extras
+    FROM exclusions_extras_dim
+) subquery
+GROUP BY 1
+
+ORDER BY 2 DESC
+LIMIT 1;
 ```
+
+     * postgresql://medhat:***@localhost/medhat
+    1 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>extras</th>
+            <th>count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>cheese</td>
+            <td>4</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+> Who are these people? XD:)
 
 #### iv) Generate an order item for each record in the customers_orders table in the format of one of the following:
 Meat Lovers
@@ -2907,48 +3594,1081 @@ Meat Lovers - Extra Bacon
 Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers
 
 
-```python
+```sql
 %%sql
+
+SELECT
+    order_id,
+    order_date,
+    pizza_name::TEXT ||
+    CASE WHEN concat_exclusions IS NOT NULL
+        THEN ' - Exclude ' || 
+            INITCAP(REPLACE(
+                REPLACE(e.concat_exclusions, ',', ', '), '_', ' ')) 
+        ELSE '' END ||
+    CASE WHEN concat_extras IS NOT NULL 
+        THEN ' - Extra ' ||
+        INITCAP(REPLACE(
+            REPLACE(e.concat_extras, ',', ', '), '_', ' '))
+        ELSE '' END AS order_item
+FROM order_fact as o
+JOIN pizza_dim as p
+USING(pizza_id)
+LEFT JOIN exclusions_extras_dim as e
+USING(exc_ext_id)
+ORDER BY 1;
 ```
 
-#### v) Generate an alphabetically ordered comma separated ingredient list for each pizza order from the customer_orders table and add a 2x in front of any relevant ingredients
-For example: "Meat Lovers: 2xBacon, Beef, ... , Salami"
+     * postgresql://medhat:***@localhost/medhat
+    14 rows affected.
 
 
-```python
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>order_id</th>
+            <th>order_date</th>
+            <th>order_item</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>2020-01-01 18:05:02</td>
+            <td>Meatlovers</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2020-01-01 19:00:52</td>
+            <td>Meatlovers</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2020-01-02 23:51:23</td>
+            <td>Vegetarian</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2020-01-02 23:51:23</td>
+            <td>Meatlovers</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>2020-01-04 13:23:46</td>
+            <td>Vegetarian - Exclude Cheese</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>2020-01-04 13:23:46</td>
+            <td>Meatlovers - Exclude Cheese</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>2020-01-04 13:23:46</td>
+            <td>Meatlovers - Exclude Cheese</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>2020-01-08 21:00:29</td>
+            <td>Meatlovers - Extra Bacon</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>2020-01-08 21:03:13</td>
+            <td>Vegetarian</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>2020-01-08 21:20:29</td>
+            <td>Vegetarian - Extra Bacon</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>2020-01-09 23:54:33</td>
+            <td>Meatlovers</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>2020-01-10 11:22:59</td>
+            <td>Meatlovers - Exclude Cheese - Extra Bacon, Chicken</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>2020-01-11 18:34:49</td>
+            <td>Meatlovers</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>2020-01-11 18:34:49</td>
+            <td>Meatlovers - Exclude Bbq Sauce, Mushrooms - Extra Bacon, Cheese</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+#### v) Generate an alphabetically ordered comma separated ingredient list for each pizza order from the customer_orders table and add a 2x in front of any relevant ingredients For example: "Meat Lovers: 2xBacon, Beef, ... , Salami"
+
+
+```sql
 %%sql
+WITH base AS (
+    SELECT
+        order_id,
+        pizza_name,
+        exc_ext_id,
+        UNNEST(string_to_array(concat_toppings, ','))
+    FROM order_fact
+    JOIN pizza_dim
+    USING(pizza_id)
+    WHERE cancellation IS NULL
+),
+exclusions AS (
+    SELECT
+        order_id,
+        pizza_name,
+        exc_ext_id,
+        UNNEST(string_to_array(concat_exclusions, ','))
+    FROM order_fact
+    JOIN pizza_dim
+    USING(pizza_id)
+    JOIN exclusions_extras_dim
+    USING(exc_ext_id)
+    WHERE cancellation IS NULL
+),
+extras AS (
+    SELECT
+        order_id,
+        pizza_name,
+        exc_ext_id, UNNEST(string_to_array(concat_extras, ','))
+    FROM order_fact
+    JOIN pizza_dim
+    USING(pizza_id)
+    JOIN exclusions_extras_dim
+    USING(exc_ext_id)
+    WHERE cancellation IS NULL
+),
+final_ing AS (
+    SELECT * FROM base
+    EXCEPT ALL
+    SELECT * FROM exclusions
+    UNION ALL
+    SELECT * FROM extras
+)
+
+SELECT 
+    order_id,
+    pizza_name,
+    pizza_name || ' ' ||
+    STRING_AGG(
+        CASE 
+        WHEN count > 1 
+            THEN count || 'X' || INITCAP(REPLACE(unnest, '_', ' '))
+        ELSE INITCAP(REPLACE(unnest, '_', ' ')) END
+    , ', ') AS order_item
+FROM (
+    SELECT order_id, pizza_name, exc_ext_id, unnest, count(*)
+    FROM final_ing
+    GROUP BY 1,2,3,4
+    ORDER BY 1,2,3,4
+) subquery
+GROUP BY 1,2;
+
+
 ```
 
-    UsageError: %%sql is a cell magic, but the cell body is empty. Did you mean the line magic %sql (single %)?
+     * postgresql://medhat:***@localhost/medhat
+    10 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>order_id</th>
+            <th>pizza_name</th>
+            <th>order_item</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Meatlovers</td>
+            <td>Meatlovers Bacon, Bbq Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Meatlovers</td>
+            <td>Meatlovers Bacon, Bbq Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Meatlovers</td>
+            <td>Meatlovers Bacon, Bbq Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Vegetarian</td>
+            <td>Vegetarian Cheese, Mushrooms, Onions, Peppers, Tomato Sauce, Tomatoes</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Meatlovers</td>
+            <td>Meatlovers Bacon, Bbq Sauce, Beef, Chicken, Mushrooms, Pepperoni, Salami, Bacon, Bbq Sauce, Beef, Chicken, Mushrooms, Pepperoni, Salami</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Vegetarian</td>
+            <td>Vegetarian Mushrooms, Onions, Peppers, Tomato Sauce, Tomatoes</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Meatlovers</td>
+            <td>Meatlovers 2XBacon, Bbq Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Vegetarian</td>
+            <td>Vegetarian Bacon, Cheese, Mushrooms, Onions, Peppers, Tomato Sauce, Tomatoes</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Meatlovers</td>
+            <td>Meatlovers Bacon, Bbq Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Meatlovers</td>
+            <td>Meatlovers 2XBacon, Beef, 2XCheese, Chicken, Pepperoni, Salami, Bacon, Bbq Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami</td>
+        </tr>
+    </tbody>
+</table>
+
 
 
 #### vi) What is the total quantity of each ingredient used in all delivered pizzas sorted by most frequent first?
 
 
-```python
+```sql
 %%sql
+WITH base AS (
+    SELECT
+        exc_ext_id,
+        UNNEST(string_to_array(concat_toppings, ','))
+    FROM order_fact
+    JOIN pizza_dim
+    USING(pizza_id)
+    WHERE cancellation IS NULL
+),
+exclusions AS (
+    SELECT 
+        exc_ext_id,
+        UNNEST(string_to_array(concat_exclusions, ','))
+    FROM order_fact
+    JOIN exclusions_extras_dim
+    USING(exc_ext_id)
+    WHERE cancellation IS NULL
+),
+extras AS (
+    SELECT 
+        exc_ext_id, UNNEST(string_to_array(concat_extras, ','))
+    FROM order_fact
+    JOIN exclusions_extras_dim
+    USING(exc_ext_id)
+    WHERE cancellation IS NULL
+),
+final_ing AS (
+    SELECT * FROM base
+    EXCEPT ALL
+    SELECT * FROM exclusions
+    UNION ALL
+    SELECT * FROM extras
+)
+
+SELECT unnest, count(*)
+FROM final_ing
+GROUP BY 1
+ORDER BY 2 DESC;
 ```
+
+     * postgresql://medhat:***@localhost/medhat
+    12 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>unnest</th>
+            <th>count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>bacon</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>mushrooms</td>
+            <td>11</td>
+        </tr>
+        <tr>
+            <td>cheese</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>salami</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>pepperoni</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>chicken</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>beef</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>bbq_sauce</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>peppers</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>tomato_sauce</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>tomatoes</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>onions</td>
+            <td>3</td>
+        </tr>
+    </tbody>
+</table>
+
+
 
 ### 4- Pricing and Ratings
 
+#### i) If a Meat Lovers pizza costs \\$12 and Vegetarian costs \\$10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?
+
+
+```sql
+%%sql
+
+SELECT 
+    pizza_name,
+    SUM(
+        CASE WHEN pizza_id = 1 THEN 12 WHEN pizza_id = 2 THEN 10 END
+    )AS total_dollars
+FROM order_fact
+JOIN pizza_dim
+USING(pizza_id)
+WHERE cancellation IS NULL
+GROUP BY 1
+```
+
+     * postgresql://medhat:***@localhost/medhat
+    2 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>pizza_name</th>
+            <th>total_dollars</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Meatlovers</td>
+            <td>108</td>
+        </tr>
+        <tr>
+            <td>Vegetarian</td>
+            <td>30</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+```sql
+%%sql
+
+SELECT 
+    SUM(
+        CASE WHEN pizza_id = 1 THEN 12 WHEN pizza_id = 2 THEN 10 END
+    ) AS total_dollars
+FROM order_fact
+JOIN pizza_dim
+USING(pizza_id)
+WHERE cancellation IS NULL
+```
+
+     * postgresql://medhat:***@localhost/medhat
+    1 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>total_dollars</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>138</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+#### ii) What if there was an additional \\$1 charge for any pizza extras?
+- Add cheese is \\$1 extras
+
+
+```sql
+%%sql
+
+SELECT 
+    pizza_name,
+    SUM(
+        CASE WHEN pizza_id = 1 THEN 12 WHEN pizza_id = 2 THEN 10 END
+    ) +
+    SUM(ARRAY_LENGTH(
+            string_to_array(concat_extras, ','), 1)
+    )AS total_dollars
+FROM order_fact
+JOIN pizza_dim
+USING(pizza_id)
+LEFT JOIN exclusions_extras_dim
+USING(exc_ext_id)
+WHERE cancellation IS NULL
+GROUP BY 1
+```
+
+     * postgresql://medhat:***@localhost/medhat
+    2 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>pizza_name</th>
+            <th>total_dollars</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Meatlovers</td>
+            <td>111</td>
+        </tr>
+        <tr>
+            <td>Vegetarian</td>
+            <td>31</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+```sql
+%%sql
+
+SELECT 
+    SUM(
+        CASE WHEN pizza_id = 1 THEN 12 WHEN pizza_id = 2 THEN 10 END
+    ) +
+    SUM(ARRAY_LENGTH(
+            string_to_array(concat_extras, ','), 1)
+    )AS total_dollars
+FROM order_fact
+JOIN pizza_dim
+USING(pizza_id)
+LEFT JOIN exclusions_extras_dim
+USING(exc_ext_id)
+WHERE cancellation IS NULL;
+```
+
+     * postgresql://medhat:***@localhost/medhat
+    1 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>total_dollars</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>142</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+#### iii) The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.
+
+
+```sql
+%%sql
+
+ALTER TABLE order_fact
+    DROP COLUMN IF EXISTS rating,
+    ADD COLUMN IF NOT EXISTS rating INT;
+
+DO $$
+    DECLARE
+        ord_id INT;
+    BEGIN
+        FOR ord_id IN SELECT order_id FROM order_fact
+        LOOP
+            EXECUTE 'UPDATE order_fact SET rating=' ||
+                floor(random() * 5 + 1) ||
+                ' WHERE cancellation IS NULL AND order_id = ' || ord_id;
+        END LOOP;
+    END $$;
+
+SELECT order_id, rating
+FROM order_fact
+ORDER BY 1
+LIMIT 3;
+```
+
+     * postgresql://medhat:***@localhost/medhat
+    Done.
+    Done.
+    3 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>order_id</th>
+            <th>rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+#### iv) Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries?
+- customer_id
+- order_id
+- runner_id
+- rating
+- order_time
+- pickup_time
+- Time between order and pickup
+- Delivery duration
+- Average speed
+- Total number of pizzas
+
+
+```sql
+%%sql
+
+SELECT
+    order_id,
+    customer_id,
+    runner_id,
+    rating,
+    order_date,
+    pickup_time,
+    pickup_time - order_date AS "Time between order and pickup",
+    duration,
+    round(distance / (EXTRACT(EPOCH FROM duration) / 60), 2)
+        AS "speed (km per min)",
+    count(*) AS "Total number of pizzas"
+FROM order_fact
+GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9
+ORDER BY 1;
+```
+
+     * postgresql://medhat:***@localhost/medhat
+    10 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>order_id</th>
+            <th>customer_id</th>
+            <th>runner_id</th>
+            <th>rating</th>
+            <th>order_date</th>
+            <th>pickup_time</th>
+            <th>Time between order and pickup</th>
+            <th>duration</th>
+            <th>speed (km per min)</th>
+            <th>Total number of pizzas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>101</td>
+            <td>1</td>
+            <td>5</td>
+            <td>2020-01-01 18:05:02</td>
+            <td>2020-01-01 18:15:34</td>
+            <td>0:10:32</td>
+            <td>0:32:00</td>
+            <td>0.63</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>101</td>
+            <td>1</td>
+            <td>4</td>
+            <td>2020-01-01 19:00:52</td>
+            <td>2020-01-01 19:10:54</td>
+            <td>0:10:02</td>
+            <td>0:27:00</td>
+            <td>0.74</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>102</td>
+            <td>1</td>
+            <td>4</td>
+            <td>2020-01-02 23:51:23</td>
+            <td>2020-01-03 00:12:37</td>
+            <td>0:21:14</td>
+            <td>0:20:00</td>
+            <td>0.67</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>103</td>
+            <td>2</td>
+            <td>3</td>
+            <td>2020-01-04 13:23:46</td>
+            <td>2020-01-04 13:53:03</td>
+            <td>0:29:17</td>
+            <td>0:40:00</td>
+            <td>0.59</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>104</td>
+            <td>3</td>
+            <td>2</td>
+            <td>2020-01-08 21:00:29</td>
+            <td>2020-01-08 21:10:57</td>
+            <td>0:10:28</td>
+            <td>0:15:00</td>
+            <td>0.67</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>101</td>
+            <td>3</td>
+            <td>None</td>
+            <td>2020-01-08 21:03:13</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>105</td>
+            <td>2</td>
+            <td>4</td>
+            <td>2020-01-08 21:20:29</td>
+            <td>2020-01-08 21:30:45</td>
+            <td>0:10:16</td>
+            <td>0:25:00</td>
+            <td>1.00</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>102</td>
+            <td>2</td>
+            <td>1</td>
+            <td>2020-01-09 23:54:33</td>
+            <td>2020-01-10 00:15:02</td>
+            <td>0:20:29</td>
+            <td>0:15:00</td>
+            <td>1.56</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>103</td>
+            <td>2</td>
+            <td>None</td>
+            <td>2020-01-10 11:22:59</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>104</td>
+            <td>1</td>
+            <td>2</td>
+            <td>2020-01-11 18:34:49</td>
+            <td>2020-01-11 18:50:20</td>
+            <td>0:15:31</td>
+            <td>0:10:00</td>
+            <td>1.00</td>
+            <td>2</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+#### v) If a Meat Lovers pizza was \\$12 and Vegetarian \\$10 fixed prices with no cost for extras and each runner is paid \\$0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
+
+
+```sql
+%%sql
+
+SELECT 
+    *,
+    SUM( distance * 0.30 )AS total_cost,
+    total_sales - SUM( distance * 0.30 ) AS total_profit
+FROM (
+    SELECT
+        order_id,
+        distance,
+        count(*),
+        SUM(
+            CASE WHEN pizza_id = 1 THEN 12 WHEN pizza_id = 2 THEN 10 END
+        ) as total_sales
+    FROM order_fact
+    JOIN pizza_dim
+    USING(pizza_id)
+    LEFT JOIN exclusions_extras_dim
+    USING(exc_ext_id)
+    WHERE cancellation IS NULL
+    GROUP BY 1, 2
+) subquery
+GROUP BY 1,2,3,4
+ORDER BY 1
+```
+
+     * postgresql://medhat:***@localhost/medhat
+    8 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>order_id</th>
+            <th>distance</th>
+            <th>count</th>
+            <th>total_sales</th>
+            <th>total_cost</th>
+            <th>total_profit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>20</td>
+            <td>1</td>
+            <td>12</td>
+            <td>6.00</td>
+            <td>6.00</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>20</td>
+            <td>1</td>
+            <td>12</td>
+            <td>6.00</td>
+            <td>6.00</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>13.4</td>
+            <td>2</td>
+            <td>22</td>
+            <td>4.020</td>
+            <td>17.980</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>23.4</td>
+            <td>3</td>
+            <td>34</td>
+            <td>7.020</td>
+            <td>26.980</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>10</td>
+            <td>1</td>
+            <td>12</td>
+            <td>3.00</td>
+            <td>9.00</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>25</td>
+            <td>1</td>
+            <td>10</td>
+            <td>7.50</td>
+            <td>2.50</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>23.4</td>
+            <td>1</td>
+            <td>12</td>
+            <td>7.020</td>
+            <td>4.980</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>10</td>
+            <td>2</td>
+            <td>24</td>
+            <td>3.00</td>
+            <td>21.00</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+```sql
+%%sql
+SELECT SUM(total_profit) AS _net
+FROM (
+    SELECT 
+        *,
+        SUM( distance * 0.30 )AS total_cost,
+        total_sales - SUM( distance * 0.30 ) AS total_profit
+    FROM (
+        SELECT
+            order_id,
+            distance,
+            count(*),
+            SUM(
+                CASE WHEN pizza_id = 1 THEN 12 WHEN pizza_id = 2 THEN 10 END
+            ) as total_sales
+        FROM order_fact
+        JOIN pizza_dim
+        USING(pizza_id)
+        LEFT JOIN exclusions_extras_dim
+        USING(exc_ext_id)
+        WHERE cancellation IS NULL
+        GROUP BY 1, 2
+    ) subquery
+    GROUP BY 1,2,3,4
+    ORDER BY 1
+) subquery
+ORDER BY 1
+```
+
+     * postgresql://medhat:***@localhost/medhat
+    1 rows affected.
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>_net</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>94.440</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
 ### 5- Bonus DML Challenges (DML = Data Manipulation Language)
 
+#### i) If Danny wants to expand his range of pizzas - how would this impact the existing data design? Write an INSERT statement to demonstrate what would happen if a new Supreme pizza with all the toppings was added to the Pizza Runner menu?
 
-```python
 
+```sql
+%%sql
+
+INSERT INTO pizza_dim
+VALUES(
+        3,
+        'Suprime',
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        (
+            SELECT STRING_AGG(LOWER(REPLACE(topping_name, ' ', '_')), ',')
+            FROM pizza_toppings
+        )
+);
+
+SELECT * FROM pizza_dim;
 ```
 
-
-```python
-
-```
-
-
-```python
-
-```
+     * postgresql://medhat:***@localhost/medhat
+    1 rows affected.
+    3 rows affected.
 
 
-```python
 
-```
+
+
+<table>
+    <thead>
+        <tr>
+            <th>pizza_id</th>
+            <th>pizza_name</th>
+            <th>bacon</th>
+            <th>bbq_sauce</th>
+            <th>beef</th>
+            <th>cheese</th>
+            <th>chicken</th>
+            <th>mushrooms</th>
+            <th>onions</th>
+            <th>pepperoni</th>
+            <th>peppers</th>
+            <th>salami</th>
+            <th>tomatoes</th>
+            <th>tomato_sauce</th>
+            <th>concat_toppings</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Meatlovers</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+            <td>False</td>
+            <td>bacon,bbq_sauce,beef,cheese,chicken,mushrooms,pepperoni,salami</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Vegetarian</td>
+            <td>False</td>
+            <td>False</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>True</td>
+            <td>cheese,mushrooms,onions,peppers,tomatoes,tomato_sauce</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Suprime</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>True</td>
+            <td>bacon,bbq_sauce,beef,cheese,chicken,mushrooms,onions,pepperoni,peppers,salami,tomatoes,tomato_sauce,bacon,bbq_sauce,beef,cheese,chicken,mushrooms,onions,pepperoni,peppers,salami,tomatoes,tomato_sauce</td>
+        </tr>
+    </tbody>
+</table>
+
+
